@@ -7,7 +7,6 @@ import com.example.pokedexdesafio.core.di.DaggerApplicationComponent
 
 class AndroidApplication : Application() {
 
-    //val appComponent: ApplicationComponent = DaggerApplicationComponent.create()
     val appComponent: ApplicationComponent by lazy(mode = LazyThreadSafetyMode.NONE) {
         DaggerApplicationComponent
             .builder()

@@ -8,7 +8,7 @@ import com.example.pokedexdesafio.core.utils.KEY_ID
 import retrofit2.Response
 import javax.inject.Inject
 
-class PokemonDetailActivity : BaseActivity(){
+class PokemonDetailActivity : BaseActivity() {
 
     @Inject
     lateinit var viewModel: PokemonDetailViewModel
@@ -24,6 +24,7 @@ class PokemonDetailActivity : BaseActivity(){
         val pokemonId = intent.getStringExtra(KEY_ID)
         if (pokemonId.isNullOrBlank()) {
             Toast.makeText(this, getString(R.string.no_param_error), Toast.LENGTH_LONG).show()
+                .also { finish() }
         } else {
             viewModel.fetchPokemonDetails(pokemonId)
             showIndeterminateModalDialog()
@@ -45,8 +46,7 @@ class PokemonDetailActivity : BaseActivity(){
     }
 
     private fun updateUI(details: PokemonDetail) {
-        val EMPTY_STRING = getString(R.string.empty_string)
-        this@PokemonDetailActivity.title = details.types.toString()
+        title = details.types.filterNotNull().joinToString(separator = " - ") { it.type.name }
 
 
     }

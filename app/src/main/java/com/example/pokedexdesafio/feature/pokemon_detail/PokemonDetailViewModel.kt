@@ -10,7 +10,7 @@ import javax.inject.Inject
 class PokemonDetailViewModel
 @Inject constructor(private val pokemonDetailUseCase: GetPokemonDetailUseCase) :
     ViewModel() {
-    
+
     private val disposable = CompositeDisposable()
     var pokemonDetails = MutableLiveData<Response<PokemonDetail>>()
     var failure = MutableLiveData<Boolean>()
@@ -19,8 +19,10 @@ class PokemonDetailViewModel
         disposable.add(
             pokemonDetailUseCase(pokemonId)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ pokemonDetails.value = it },
-                    { failure.value = true })
+                .subscribe(
+                    { pokemonDetails.value = it },
+                    { failure.value = true }
+                )
         )
     }
 

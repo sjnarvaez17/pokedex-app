@@ -19,46 +19,32 @@
         android:id="@+id/pokemonType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_lateral_recipe_title"
-        android:layout_marginTop="@dimen/margin_recipe_title"
-        android:layout_marginEnd="@dimen/margin_lateral_recipe_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/pokemonImage" />
 
     <TextView
         android:id="@+id/pokemonAttacks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_lateral_recipe_title"
-        android:layout_marginTop="@dimen/margin_recipe_title"
-        android:layout_marginEnd="@dimen/margin_lateral_recipe_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/pokemonType" />
 
     <TextView
         android:id="@+id/pokemonAbilities"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_lateral_recipe_title"
-        android:layout_marginTop="@dimen/margin_recipe_title"
-        android:layout_marginEnd="@dimen/margin_lateral_recipe_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/pokemonAttacks" />
 
     <TextView
         android:id="@+id/pokemonPlacesEncounter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_lateral_recipe_title"
-        android:layout_marginTop="@dimen/margin_recipe_title"
-        android:layout_marginEnd="@dimen/margin_lateral_recipe_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/pokemonAbilities" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

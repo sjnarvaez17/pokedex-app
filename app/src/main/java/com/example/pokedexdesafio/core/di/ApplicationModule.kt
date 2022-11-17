@@ -5,6 +5,9 @@ import com.example.pokedexdesafio.AndroidApplication
 import com.example.pokedexdesafio.feature.pokemon.GetPokemonRepo
 import com.example.pokedexdesafio.feature.pokemon.GetPokemonRepoImpl
 import com.example.pokedexdesafio.feature.pokemon.GetPokemonService
+import com.example.pokedexdesafio.feature.pokemon_detail.GetPokemonDetailRepoImpl
+import com.example.pokedexdesafio.feature.pokemon_detail.GetPokemonDetailService
+import com.example.pokedexdesafio.feature.pokemon_detail.GetPokemonDetailsRepo
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -32,5 +35,13 @@ class ApplicationModule(private val application: AndroidApplication) {
     @Provides
     @Singleton
     fun provideGetPokemonRepo(service: GetPokemonService): GetPokemonRepo = GetPokemonRepoImpl(service)
+
+    @Provides
+    @Singleton
+    fun provideGetPokemonDetailService(retrofit: Retrofit) = GetPokemonDetailService(retrofit)
+
+    @Provides
+    @Singleton
+    fun provideGetPokemonDetailRepo(service: GetPokemonDetailService): GetPokemonDetailsRepo = GetPokemonDetailRepoImpl(service)
 
 }
