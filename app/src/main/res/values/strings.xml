@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PokedexDesafio</string>
+    <string name="wait_a_moment">Por favor, espere un momento</string>
+    <string name="network_error">Error obteniendo los datos</string>
+    <string name="no_param_error">No se recibió el pokémon como parámetro</string>
+    <string name="empty_string" />
 </resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="distance_progress_and_label">15dp</dimen>
+    <dimen name="margin_recipe_title">20dp</dimen>
+    <dimen name="text_size_recipe_title">17sp</dimen>
+    <dimen name="margin_lateral_recipe_title">5dp</dimen>
+    <dimen name="height_recipe_image">200dp</dimen>
+</resources>
