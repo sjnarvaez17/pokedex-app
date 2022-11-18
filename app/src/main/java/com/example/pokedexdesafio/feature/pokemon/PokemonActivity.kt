@@ -2,6 +2,7 @@ package com.example.pokedexdesafio.feature.pokemon
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -36,6 +37,8 @@ class PokemonActivity : BaseActivity(), PokemonAdapter.PokemonListener {
         viewModel.failure.observe(this@PokemonActivity) { onFailure(it) }
         viewModel.fetchPokemonList()
         showIndeterminateModalDialog()
+
+        findViewById<Button>(R.id.refresh_button).setOnClickListener { viewModel.fetchPokemonList() }
     }
 
     override fun onPokemonClick(pokemon: Pokemon) {
@@ -44,14 +47,14 @@ class PokemonActivity : BaseActivity(), PokemonAdapter.PokemonListener {
         startActivity(intent)
     }
 
-    private fun onResponse(response: Response<List<Pokemon>>) {
+    private fun onResponse(response: Response<PokemonResponse>) {
         hideIndeterminateModalDialog()
         if (response.isSuccessful) {
             val pokemons = response.body()
             if (pokemons == null) {
                 Toast.makeText(this, getString(R.string.network_error), Toast.LENGTH_LONG).show()
             } else {
-                pokemonAdapter.updateContent(pokemons)
+                pokemonAdapter.updateContent(pokemons.results)
             }
         } else {
             Toast.makeText(this, getString(R.string.network_error), Toast.LENGTH_LONG).show()

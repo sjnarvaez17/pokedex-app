@@ -11,7 +11,7 @@ class PokemonViewModel @Inject constructor(private val pokemonUseCase: PokemonUs
     ViewModel() {
 
     private val disposable = CompositeDisposable()
-    var pokemonList = MutableLiveData<Response<List<Pokemon>>>()
+    var pokemonList = MutableLiveData<Response<PokemonResponse>>()
     var failure = MutableLiveData<Boolean>()
 
     fun fetchPokemonList() {

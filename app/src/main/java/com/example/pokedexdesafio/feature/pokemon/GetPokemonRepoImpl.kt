@@ -8,7 +8,7 @@ import javax.inject.Inject
 class GetPokemonRepoImpl @Inject constructor(private val pokemonService: GetPokemonService) :
     GetPokemonRepo {
 
-    override fun getPokemonList(): Single<Response<List<Pokemon>>> =
+    override fun getPokemonList(): Single<Response<PokemonResponse>> =
         Single.fromCallable { pokemonService.fetchPokemonList() }
             .subscribeOn(Schedulers.io())
 }

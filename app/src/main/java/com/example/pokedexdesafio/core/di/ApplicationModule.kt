@@ -24,7 +24,7 @@ class ApplicationModule(private val application: AndroidApplication) {
     @Provides
     @Singleton
     fun provideRetrofit(): Retrofit = Retrofit.Builder()
-        .baseUrl("https://pokeapi.co/api/v2/")
+        .baseUrl("https://pokeapi.co/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

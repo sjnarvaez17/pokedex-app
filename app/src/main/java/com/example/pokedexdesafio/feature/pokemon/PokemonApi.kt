@@ -6,15 +6,14 @@ import retrofit2.http.Query
 
 interface PokemonApi {
 
-
     companion object {
         private const val DEFAULT_LIMIT = 150
         private const val DEFAULT_OFFSET = 0
     }
 
-    @GET("/pokemon")
+    @GET("/api/v2/pokemon")
     fun fetchPokemonList(
         @Query("limit") limit: Int = DEFAULT_LIMIT,
         @Query("offset") offset: Int = DEFAULT_OFFSET
-    ): Call<List<Pokemon>>
+    ): Call<PokemonResponse>
 }

@@ -5,5 +5,5 @@ import retrofit2.Response
 
 interface GetPokemonRepo {
 
-    fun getPokemonList(): Single<Response<List<Pokemon>>>
+    fun getPokemonList(): Single<Response<PokemonResponse>>
 }

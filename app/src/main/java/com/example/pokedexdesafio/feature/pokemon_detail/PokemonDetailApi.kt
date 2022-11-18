@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface PokemonDetailApi {
 
-    @GET("/pokemon/{pokemonId}")
+    @GET("/api/v2/pokemon/{pokemonId}")
     fun fetchPokemonDetails(@Path("pokemonId") id: String): Call<PokemonDetail>
 
 }

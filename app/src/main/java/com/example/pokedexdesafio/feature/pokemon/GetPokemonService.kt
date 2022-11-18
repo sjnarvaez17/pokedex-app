@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 class GetPokemonService @Inject constructor(private val retrofit: Retrofit) {
 
-    fun fetchPokemonList(): Response<List<Pokemon>> {
+    fun fetchPokemonList(): Response<PokemonResponse> {
         return try {
             retrofit.create(PokemonApi::class.java).fetchPokemonList().execute()
         } catch (exception: Exception) {
