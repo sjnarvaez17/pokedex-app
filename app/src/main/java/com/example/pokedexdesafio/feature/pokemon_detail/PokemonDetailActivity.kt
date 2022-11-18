@@ -1,7 +1,9 @@
 package com.example.pokedexdesafio.feature.pokemon_detail
 
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.example.pokedexdesafio.R
 import com.example.pokedexdesafio.core.platform.BaseActivity
 import com.example.pokedexdesafio.core.utils.KEY_ID
@@ -46,8 +48,12 @@ class PokemonDetailActivity : BaseActivity() {
     }
 
     private fun updateUI(details: PokemonDetail) {
-        title = details.types.filterNotNull().joinToString(separator = " - ") { it.type.name }
+        title = details.name
+        Glide.with(this@PokemonDetailActivity)
+            .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${details.id}.png")
+            .into(findViewById(R.id.pokemonImage))
 
-
+        findViewById<TextView>(R.id.pokemonType).text =
+            details.types.filterNotNull().joinToString(separator = " - ") { it.type.name }
     }
 }

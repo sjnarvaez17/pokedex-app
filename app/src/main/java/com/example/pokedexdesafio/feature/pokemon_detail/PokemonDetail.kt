@@ -5,6 +5,8 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class PokemonDetail(
+    val id: Int,
+    val name: String,
     val types: List<TypeContainer?>,
     // no info about evolve
     val moves: List<MoveContainer?>,
