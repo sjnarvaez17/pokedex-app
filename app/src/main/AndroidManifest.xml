@@ -13,7 +13,7 @@
         android:theme="@style/Theme.SplashScreen">
 
         <activity
-            android:name=".feature.splash.SplashActivity"
+            android:name=".presentation.activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +27,7 @@
         </activity>
 
         <activity
-            android:name=".feature.pokemon.PokemonActivity"
+            android:name=".presentation.activity.PokemonActivity"
             android:exported="false"
             android:theme="@style/Theme.PokedexDesafio">
             <meta-data
@@ -36,7 +36,7 @@
         </activity>
 
         <activity
-            android:name=".feature.pokemon_detail.PokemonDetailActivity"
+            android:name=".presentation.activity.PokemonDetailActivity"
             android:exported="false"
             android:theme="@style/Theme.PokedexDesafio">
             <meta-data

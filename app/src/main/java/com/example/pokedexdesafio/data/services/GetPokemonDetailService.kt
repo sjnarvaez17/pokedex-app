@@ -1,9 +1,11 @@
-package com.example.pokedexdesafio.feature.pokemon_detail
+package com.example.pokedexdesafio.data.services
 
 import android.util.Log
 import com.example.pokedexdesafio.core.utils.ERROR_CODE_IO_EXCEPTION
 import com.example.pokedexdesafio.core.utils.ERROR_CONTENT_LENGTH
 import com.example.pokedexdesafio.core.utils.MEDIA_TYPE_JSON
+import com.example.pokedexdesafio.domain.model.PokemonDetail
+import com.example.pokedexdesafio.data.api.PokemonDetailApi
 import okhttp3.MediaType
 import okhttp3.ResponseBody
 import okio.Buffer

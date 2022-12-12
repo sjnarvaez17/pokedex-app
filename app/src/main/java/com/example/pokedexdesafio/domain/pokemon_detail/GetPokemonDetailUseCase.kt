@@ -1,5 +1,6 @@
-package com.example.pokedexdesafio.feature.pokemon_detail
+package com.example.pokedexdesafio.domain.pokemon_detail
 
+import com.example.pokedexdesafio.domain.repository.GetPokemonDetailsRepo
 import javax.inject.Inject
 
 class GetPokemonDetailUseCase @Inject constructor(private val repository: GetPokemonDetailsRepo) {

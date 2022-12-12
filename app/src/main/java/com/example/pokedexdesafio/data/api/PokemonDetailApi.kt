@@ -1,9 +1,9 @@
-package com.example.pokedexdesafio.feature.pokemon_detail
+package com.example.pokedexdesafio.data.api
 
+import com.example.pokedexdesafio.domain.model.PokemonDetail
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.Query
 
 interface PokemonDetailApi {
 

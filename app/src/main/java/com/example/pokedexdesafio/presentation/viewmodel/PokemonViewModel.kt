@@ -1,27 +1,27 @@
-package com.example.pokedexdesafio.feature.pokemon_detail
+package com.example.pokedexdesafio.presentation.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.pokedexdesafio.domain.model.PokemonResponse
+import com.example.pokedexdesafio.domain.pokemon.PokemonUseCase
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import retrofit2.Response
 import javax.inject.Inject
 
-class PokemonDetailViewModel
-@Inject constructor(private val pokemonDetailUseCase: GetPokemonDetailUseCase) :
+class PokemonViewModel @Inject constructor(private val pokemonUseCase: PokemonUseCase) :
     ViewModel() {
 
     private val disposable = CompositeDisposable()
-    var pokemonDetails = MutableLiveData<Response<PokemonDetail>>()
+    var pokemonList = MutableLiveData<Response<PokemonResponse>>()
     var failure = MutableLiveData<Boolean>()
 
-    fun fetchPokemonDetails(pokemonId: String) {
+    fun fetchPokemonList() {
         disposable.add(
-            pokemonDetailUseCase(pokemonId)
-                .observeOn(AndroidSchedulers.mainThread())
+            pokemonUseCase().observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                    { pokemonDetails.value = it },
-                    { failure.value = true }
+                    { pokemonList.postValue(it) },
+                    { failure.postValue(true) }
                 )
         )
     }

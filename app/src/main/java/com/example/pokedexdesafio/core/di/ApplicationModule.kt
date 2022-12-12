@@ -2,12 +2,12 @@ package com.example.pokedexdesafio.core.di
 
 import android.content.Context
 import com.example.pokedexdesafio.AndroidApplication
-import com.example.pokedexdesafio.feature.pokemon.GetPokemonRepo
-import com.example.pokedexdesafio.feature.pokemon.GetPokemonRepoImpl
-import com.example.pokedexdesafio.feature.pokemon.GetPokemonService
-import com.example.pokedexdesafio.feature.pokemon_detail.GetPokemonDetailRepoImpl
-import com.example.pokedexdesafio.feature.pokemon_detail.GetPokemonDetailService
-import com.example.pokedexdesafio.feature.pokemon_detail.GetPokemonDetailsRepo
+import com.example.pokedexdesafio.domain.repository.GetPokemonRepo
+import com.example.pokedexdesafio.data.services.GetPokemonRepoImpl
+import com.example.pokedexdesafio.data.services.GetPokemonService
+import com.example.pokedexdesafio.data.repository.GetPokemonDetailRepoImpl
+import com.example.pokedexdesafio.data.services.GetPokemonDetailService
+import com.example.pokedexdesafio.domain.repository.GetPokemonDetailsRepo
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit

@@ -1,4 +1,4 @@
-package com.example.pokedexdesafio.feature.pokemon
+package com.example.pokedexdesafio.presentation.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedexdesafio.R
 import com.example.pokedexdesafio.core.platform.BaseActivity
 import com.example.pokedexdesafio.core.utils.KEY_ID
-import com.example.pokedexdesafio.feature.pokemon_detail.PokemonDetailActivity
+import com.example.pokedexdesafio.domain.model.Pokemon
+import com.example.pokedexdesafio.domain.model.PokemonResponse
+import com.example.pokedexdesafio.presentation.adapter.PokemonAdapter
+import com.example.pokedexdesafio.presentation.viewmodel.PokemonViewModel
 import retrofit2.Response
 import javax.inject.Inject
 

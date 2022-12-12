@@ -1,4 +1,4 @@
-package com.example.pokedexdesafio.feature.pokemon_detail
+package com.example.pokedexdesafio.presentation.activity
 
 import android.os.Bundle
 import android.widget.TextView
@@ -7,6 +7,8 @@ import com.bumptech.glide.Glide
 import com.example.pokedexdesafio.R
 import com.example.pokedexdesafio.core.platform.BaseActivity
 import com.example.pokedexdesafio.core.utils.KEY_ID
+import com.example.pokedexdesafio.domain.model.PokemonDetail
+import com.example.pokedexdesafio.presentation.viewmodel.PokemonDetailViewModel
 import retrofit2.Response
 import javax.inject.Inject
 

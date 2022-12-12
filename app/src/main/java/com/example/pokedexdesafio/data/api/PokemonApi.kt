@@ -1,5 +1,6 @@
-package com.example.pokedexdesafio.feature.pokemon
+package com.example.pokedexdesafio.data.api
 
+import com.example.pokedexdesafio.domain.model.PokemonResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

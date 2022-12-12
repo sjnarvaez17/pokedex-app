@@ -1,10 +1,8 @@
-package com.example.pokedexdesafio.feature.splash
+package com.example.pokedexdesafio.presentation.activity
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.example.pokedexdesafio.core.platform.BaseActivity
-import com.example.pokedexdesafio.feature.pokemon.PokemonActivity
 
 class SplashActivity : BaseActivity() {
 

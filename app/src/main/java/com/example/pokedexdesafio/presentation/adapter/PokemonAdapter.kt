@@ -1,4 +1,4 @@
-package com.example.pokedexdesafio.feature.pokemon
+package com.example.pokedexdesafio.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedexdesafio.R
+import com.example.pokedexdesafio.domain.model.Pokemon
 
 class PokemonAdapter(private var pokemons: List<Pokemon>, private val listener: PokemonListener) :
     RecyclerView.Adapter<PokemonAdapter.ItemViewHolder>() {

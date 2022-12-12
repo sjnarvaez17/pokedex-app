@@ -1,4 +1,4 @@
-package com.example.pokedexdesafio.feature.pokemon
+package com.example.pokedexdesafio.domain.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
