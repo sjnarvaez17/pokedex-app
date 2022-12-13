@@ -1,4 +1,4 @@
-package com.example.pokedexdesafio.data.services
+package com.example.pokedexdesafio.data.repository
 
 import com.example.pokedexdesafio.data.services.GetPokemonService
 import com.example.pokedexdesafio.domain.model.PokemonResponse
