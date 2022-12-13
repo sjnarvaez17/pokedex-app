@@ -1,4 +1,4 @@
-package com.example.pokedexdesafio.domain.pokemon
+package com.example.pokedexdesafio.domain.use_case
 
 import com.example.pokedexdesafio.domain.repository.GetPokemonRepo
 import javax.inject.Inject
