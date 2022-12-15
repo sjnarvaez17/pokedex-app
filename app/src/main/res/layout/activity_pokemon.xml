@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".feature.pokemon.PokemonActivity">
+    tools:context=".presentation.activity.PokemonActivity">
 
     <Button
         android:id="@+id/refresh_button"

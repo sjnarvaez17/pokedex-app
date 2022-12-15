@@ -1,5 +1,8 @@
-package com.example.pokedexdesafio.feature.pokemon_detail
+package com.example.pokedexdesafio.data.repository
 
+import com.example.pokedexdesafio.data.services.GetPokemonDetailService
+import com.example.pokedexdesafio.domain.model.PokemonDetail
+import com.example.pokedexdesafio.domain.repository.GetPokemonDetailsRepo
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 import retrofit2.Response

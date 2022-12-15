@@ -1,7 +1,9 @@
-package com.example.pokedexdesafio.feature.pokemon
+package com.example.pokedexdesafio.presentation.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.pokedexdesafio.domain.model.PokemonResponse
+import com.example.pokedexdesafio.domain.use_case.PokemonUseCase
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import retrofit2.Response
