@@ -4,7 +4,7 @@ import android.util.Log
 import com.example.pokedexdesafio.core.utils.ERROR_CODE_IO_EXCEPTION
 import com.example.pokedexdesafio.core.utils.ERROR_CONTENT_LENGTH
 import com.example.pokedexdesafio.core.utils.MEDIA_TYPE_JSON
-import com.example.pokedexdesafio.domain.model.PokemonResponse
+import com.example.pokedexdesafio.data.model.PokemonResponse
 import com.example.pokedexdesafio.data.api.PokemonApi
 import okhttp3.MediaType
 import okhttp3.ResponseBody

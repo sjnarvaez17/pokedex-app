@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedexdesafio.R
-import com.example.pokedexdesafio.domain.model.Pokemon
+import com.example.pokedexdesafio.data.model.Pokemon
 
 class PokemonAdapter(private var pokemons: List<Pokemon>, private val listener: PokemonListener) :
     RecyclerView.Adapter<PokemonAdapter.ItemViewHolder>() {

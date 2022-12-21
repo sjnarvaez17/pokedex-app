@@ -1,7 +1,7 @@
 package com.example.pokedexdesafio.data.api
 
-import com.example.pokedexdesafio.domain.model.PokemonDetail
-import com.example.pokedexdesafio.domain.model.PokemonResponse
+import com.example.pokedexdesafio.data.model.PokemonDetail
+import com.example.pokedexdesafio.data.model.PokemonResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

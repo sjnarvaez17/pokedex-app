@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedexdesafio.R
 import com.example.pokedexdesafio.core.platform.BaseActivity
 import com.example.pokedexdesafio.core.utils.KEY_ID
-import com.example.pokedexdesafio.domain.model.Pokemon
-import com.example.pokedexdesafio.domain.model.PokemonResponse
+import com.example.pokedexdesafio.data.model.Pokemon
+import com.example.pokedexdesafio.data.model.PokemonResponse
 import com.example.pokedexdesafio.presentation.adapter.PokemonAdapter
 import com.example.pokedexdesafio.presentation.viewmodel.PokemonViewModel
 import retrofit2.Response

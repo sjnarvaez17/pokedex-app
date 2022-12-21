@@ -1,7 +1,7 @@
 package com.example.pokedexdesafio.data.repository
 
 import com.example.pokedexdesafio.data.services.GetPokemonService
-import com.example.pokedexdesafio.domain.model.PokemonResponse
+import com.example.pokedexdesafio.data.model.PokemonResponse
 import com.example.pokedexdesafio.domain.repository.GetPokemonRepo
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
