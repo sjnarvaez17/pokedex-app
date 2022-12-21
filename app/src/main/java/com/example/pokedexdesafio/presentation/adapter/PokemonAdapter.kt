@@ -7,13 +7,13 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedexdesafio.R
-import com.example.pokedexdesafio.data.model.Pokemon
+import com.example.pokedexdesafio.data.model.PokemonResponse
 
-class PokemonAdapter(private var pokemons: List<Pokemon>, private val listener: PokemonListener) :
+class PokemonAdapter(private var pokemons: List<PokemonResponse>, private val listener: PokemonListener) :
     RecyclerView.Adapter<PokemonAdapter.ItemViewHolder>() {
 
     interface PokemonListener {
-        fun onPokemonClick(pokemon: Pokemon)
+        fun onPokemonClick(pokemon: PokemonResponse)
     }
 
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -21,7 +21,7 @@ class PokemonAdapter(private var pokemons: List<Pokemon>, private val listener: 
             itemView.findViewById<ConstraintLayout>(R.id.adapterContainer)
         private val pokemonName = itemView.findViewById<TextView>(R.id.pokemonName)
 
-        fun bind(pokemon: Pokemon, listener: PokemonListener) {
+        fun bind(pokemon: PokemonResponse, listener: PokemonListener) {
             pokemonName.text = pokemon.name
             adapterContainer.setOnClickListener { listener.onPokemonClick(pokemon) }
         }
@@ -36,8 +36,8 @@ class PokemonAdapter(private var pokemons: List<Pokemon>, private val listener: 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) =
         holder.bind(pokemons[position], listener)
 
-    fun updateContent(newPokemons: List<Pokemon>) {
-        pokemons = newPokemons
+    fun updateContent(newPokemonResponses: List<PokemonResponse>) {
+        pokemons = newPokemonResponses
         notifyDataSetChanged()
     }
 }

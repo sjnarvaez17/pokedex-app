@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedexdesafio.R
 import com.example.pokedexdesafio.core.platform.BaseActivity
 import com.example.pokedexdesafio.core.utils.KEY_ID
-import com.example.pokedexdesafio.data.model.Pokemon
 import com.example.pokedexdesafio.data.model.PokemonResponse
+import com.example.pokedexdesafio.data.model.PokemonContainerResponse
 import com.example.pokedexdesafio.presentation.adapter.PokemonAdapter
 import com.example.pokedexdesafio.presentation.viewmodel.PokemonViewModel
 import retrofit2.Response
@@ -44,13 +44,13 @@ class PokemonActivity : BaseActivity(), PokemonAdapter.PokemonListener {
         findViewById<Button>(R.id.refresh_button).setOnClickListener { viewModel.fetchPokemonList() }
     }
 
-    override fun onPokemonClick(pokemon: Pokemon) {
+    override fun onPokemonClick(pokemon: PokemonResponse) {
         val intent = Intent(this, PokemonDetailActivity::class.java)
             .apply { putExtra(KEY_ID, pokemon.name) }
         startActivity(intent)
     }
 
-    private fun onResponse(response: Response<PokemonResponse>) {
+    private fun onResponse(response: Response<PokemonContainerResponse>) {
         hideIndeterminateModalDialog()
         if (response.isSuccessful) {
             val pokemons = response.body()
