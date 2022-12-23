@@ -16,7 +16,7 @@ data class PokemonResponse(val id: Int?, val name: String?, val url: String?) : 
 
 // Ext functions for mapping into business models
 fun PokemonResponse.toPokemon(): Pokemon? =
-    if (id == null || name.isNullOrBlank() || url.isNullOrBlank()) {
+    if (name.isNullOrBlank() || url.isNullOrBlank()) {
         null
     } else {
         Pokemon(id, name, url)

@@ -3,18 +3,16 @@ package com.example.pokedexdesafio.presentation.activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.Toast
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedexdesafio.R
+import com.example.pokedexdesafio.core.functional.Response
 import com.example.pokedexdesafio.core.platform.BaseActivity
 import com.example.pokedexdesafio.core.utils.KEY_ID
-import com.example.pokedexdesafio.data.model.PokemonResponse
-import com.example.pokedexdesafio.data.model.PokemonContainerResponse
+import com.example.pokedexdesafio.domain.model.Pokemon
 import com.example.pokedexdesafio.presentation.adapter.PokemonAdapter
 import com.example.pokedexdesafio.presentation.viewmodel.PokemonViewModel
-import retrofit2.Response
 import javax.inject.Inject
 
 class PokemonActivity : BaseActivity(), PokemonAdapter.PokemonListener {
@@ -44,23 +42,20 @@ class PokemonActivity : BaseActivity(), PokemonAdapter.PokemonListener {
         findViewById<Button>(R.id.refresh_button).setOnClickListener { viewModel.fetchPokemonList() }
     }
 
-    override fun onPokemonClick(pokemon: PokemonResponse) {
+    override fun onPokemonClick(pokemon: Pokemon) {
         val intent = Intent(this, PokemonDetailActivity::class.java)
             .apply { putExtra(KEY_ID, pokemon.name) }
         startActivity(intent)
     }
 
-    private fun onResponse(response: Response<PokemonContainerResponse>) {
+    private fun onResponse(response: Response<List<Pokemon>>) {
         hideIndeterminateModalDialog()
-        if (response.isSuccessful) {
-            val pokemons = response.body()
-            if (pokemons == null) {
-                Toast.makeText(this, getString(R.string.network_error), Toast.LENGTH_LONG).show()
-            } else {
-                pokemonAdapter.updateContent(pokemons.results)
+        if (response.isSuccess()) {
+            if (response.success != null) {
+                pokemonAdapter.updateContent(response.success.value)
             }
         } else {
-            Toast.makeText(this, getString(R.string.network_error), Toast.LENGTH_LONG).show()
+            response.failure?.let { manageFailure(it) }
         }
     }
 
