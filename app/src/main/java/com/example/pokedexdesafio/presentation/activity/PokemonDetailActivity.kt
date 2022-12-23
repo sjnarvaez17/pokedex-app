@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide
 import com.example.pokedexdesafio.R
 import com.example.pokedexdesafio.core.platform.BaseActivity
 import com.example.pokedexdesafio.core.utils.KEY_ID
-import com.example.pokedexdesafio.data.model.PokemonDetail
+import com.example.pokedexdesafio.data.model.PokemonDetailResponse
 import com.example.pokedexdesafio.presentation.viewmodel.PokemonDetailViewModel
 import retrofit2.Response
 import javax.inject.Inject
@@ -35,7 +35,7 @@ class PokemonDetailActivity : BaseActivity() {
         }
     }
 
-    private fun onResponse(response: Response<PokemonDetail>) {
+    private fun onResponse(response: Response<PokemonDetailResponse>) {
         hideIndeterminateModalDialog()
         if (response.isSuccessful) {
             val pokemonDetail = response.body()
@@ -49,7 +49,7 @@ class PokemonDetailActivity : BaseActivity() {
         }
     }
 
-    private fun updateUI(details: PokemonDetail) {
+    private fun updateUI(details: PokemonDetailResponse) {
         title = details.name
         Glide.with(this@PokemonDetailActivity)
             .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${details.id}.png")

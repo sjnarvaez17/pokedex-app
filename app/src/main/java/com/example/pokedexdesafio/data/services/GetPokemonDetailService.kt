@@ -5,7 +5,7 @@ import com.example.pokedexdesafio.core.utils.ERROR_CODE_IO_EXCEPTION
 import com.example.pokedexdesafio.core.utils.ERROR_CONTENT_LENGTH
 import com.example.pokedexdesafio.core.utils.MEDIA_TYPE_JSON
 import com.example.pokedexdesafio.data.api.PokemonApi
-import com.example.pokedexdesafio.data.model.PokemonDetail
+import com.example.pokedexdesafio.data.model.PokemonDetailResponse
 import okhttp3.MediaType
 import okhttp3.ResponseBody
 import okio.Buffer
@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 class GetPokemonDetailService @Inject constructor(private val retrofit: Retrofit) {
 
-    fun fetchPokemonDetails(id: String): Response<PokemonDetail> {
+    fun fetchPokemonDetails(id: String): Response<PokemonDetailResponse> {
         return try {
             retrofit.create(PokemonApi::class.java).fetchPokemonDetails(id).execute()
         } catch (exception: Exception) {

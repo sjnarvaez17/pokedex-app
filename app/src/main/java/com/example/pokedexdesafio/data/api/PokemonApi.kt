@@ -1,6 +1,6 @@
 package com.example.pokedexdesafio.data.api
 
-import com.example.pokedexdesafio.data.model.PokemonDetail
+import com.example.pokedexdesafio.data.model.PokemonDetailResponse
 import com.example.pokedexdesafio.data.model.PokemonContainerResponse
 import retrofit2.Call
 import retrofit2.http.GET
@@ -21,6 +21,6 @@ interface PokemonApi {
     ): Call<PokemonContainerResponse>
 
     @GET("/api/v2/pokemon/{pokemonId}")
-    fun fetchPokemonDetails(@Path("pokemonId") id: String): Call<PokemonDetail>
+    fun fetchPokemonDetails(@Path("pokemonId") id: String): Call<PokemonDetailResponse>
 
 }
