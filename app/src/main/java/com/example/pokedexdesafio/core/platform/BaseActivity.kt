@@ -42,7 +42,8 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
-    fun manageFailure(failure: Failure) {
+    fun onFailure(failure: Failure) {
+        hideIndeterminateModalDialog()
         when(failure){
             is Failure.GenericFailure -> Toast.makeText(this, "Error general en el flujo", Toast.LENGTH_LONG).show()
             is Failure.ServerError -> Toast.makeText(this, "Error en el servidor", Toast.LENGTH_LONG).show()

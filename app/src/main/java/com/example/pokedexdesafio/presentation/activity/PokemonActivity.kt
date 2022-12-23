@@ -35,7 +35,6 @@ class PokemonActivity : BaseActivity(), PokemonAdapter.PokemonListener {
         }
 
         viewModel.pokemonList.observe(this@PokemonActivity) { onResponse(it) }
-        viewModel.failure.observe(this@PokemonActivity) { onFailure(it) }
         viewModel.fetchPokemonList()
         showIndeterminateModalDialog()
 
@@ -55,7 +54,7 @@ class PokemonActivity : BaseActivity(), PokemonAdapter.PokemonListener {
                 pokemonAdapter.updateContent(response.success.value)
             }
         } else {
-            response.failure?.let { manageFailure(it) }
+            response.failure?.let { onFailure(it) }
         }
     }
 

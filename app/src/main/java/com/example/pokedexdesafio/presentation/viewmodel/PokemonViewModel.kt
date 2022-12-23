@@ -14,14 +14,13 @@ class PokemonViewModel @Inject constructor(private val pokemonUseCase: PokemonUs
 
     private val disposable = CompositeDisposable()
     var pokemonList = MutableLiveData<Response<List<Pokemon>>>()
-    var failure = MutableLiveData<Boolean>()
 
     fun fetchPokemonList() {
         disposable.add(
             pokemonUseCase().observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                     { pokemonList.postValue(it) },
-                    { failure.postValue(true) }
+                    { pokemonList.postValue(Response()) }
                 )
         )
     }
