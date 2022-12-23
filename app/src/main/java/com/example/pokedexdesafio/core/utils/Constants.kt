@@ -1,7 +1,5 @@
 package com.example.pokedexdesafio.core.utils
 
-import com.example.pokedexdesafio.R
-
 const val EMPTY_STRING = ""
 const val MEDIA_TYPE_JSON = "application/json"
 const val ERROR_CODE_IO_EXCEPTION = -1
