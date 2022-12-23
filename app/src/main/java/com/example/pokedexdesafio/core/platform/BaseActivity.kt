@@ -38,18 +38,18 @@ abstract class BaseActivity : AppCompatActivity() {
     fun onFailure(failure: Boolean) {
         hideIndeterminateModalDialog()
         if (failure) {
-            Toast.makeText(this, getString(R.string.network_error), Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.error_network), Toast.LENGTH_LONG).show()
         }
     }
 
     fun onFailure(failure: Failure) {
         hideIndeterminateModalDialog()
         when(failure){
-            is Failure.GenericFailure -> Toast.makeText(this, "Error general en el flujo", Toast.LENGTH_LONG).show()
-            is Failure.ServerError -> Toast.makeText(this, "Error en el servidor", Toast.LENGTH_LONG).show()
-            is Failure.ServerNotFound -> Toast.makeText(this, "Servidor no encontrado", Toast.LENGTH_LONG).show()
-            is Failure.NetworkError -> Toast.makeText(this, "Error de red", Toast.LENGTH_LONG).show()
-            is Failure.LocalDatabaseError -> Toast.makeText(this, "Error local de memoria", Toast.LENGTH_LONG).show()
+            is Failure.GenericFailure -> Toast.makeText(this, getString(R.string.error_generic), Toast.LENGTH_LONG).show()
+            is Failure.ServerError -> Toast.makeText(this, getString(R.string.error_server_internal), Toast.LENGTH_LONG).show()
+            is Failure.ServerNotFound -> Toast.makeText(this, getString(R.string.error_server_not_found), Toast.LENGTH_LONG).show()
+            is Failure.NetworkError -> Toast.makeText(this, getString(R.string.error_network), Toast.LENGTH_LONG).show()
+            is Failure.LocalDatabaseError -> Toast.makeText(this, getString(R.string.error_local_database), Toast.LENGTH_LONG).show()
         }
     }
 

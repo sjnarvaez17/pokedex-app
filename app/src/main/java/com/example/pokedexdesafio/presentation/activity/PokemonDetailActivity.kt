@@ -40,12 +40,12 @@ class PokemonDetailActivity : BaseActivity() {
         if (response.isSuccessful) {
             val pokemonDetail = response.body()
             if (pokemonDetail == null) {
-                Toast.makeText(this, getString(R.string.network_error), Toast.LENGTH_LONG).show()
+                Toast.makeText(this, getString(R.string.error_network), Toast.LENGTH_LONG).show()
             } else {
                 updateUI(pokemonDetail)
             }
         } else {
-            Toast.makeText(this, getString(R.string.network_error), Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.error_network), Toast.LENGTH_LONG).show()
         }
     }
 
