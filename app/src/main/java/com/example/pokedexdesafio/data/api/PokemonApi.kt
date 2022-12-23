@@ -1,7 +1,7 @@
 package com.example.pokedexdesafio.data.api
 
-import com.example.pokedexdesafio.domain.model.PokemonDetail
-import com.example.pokedexdesafio.domain.model.PokemonResponse
+import com.example.pokedexdesafio.data.model.PokemonDetail
+import com.example.pokedexdesafio.data.model.PokemonContainerResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -18,7 +18,7 @@ interface PokemonApi {
     fun fetchPokemonList(
         @Query("limit") limit: Int = DEFAULT_LIMIT,
         @Query("offset") offset: Int = DEFAULT_OFFSET
-    ): Call<PokemonResponse>
+    ): Call<PokemonContainerResponse>
 
     @GET("/api/v2/pokemon/{pokemonId}")
     fun fetchPokemonDetails(@Path("pokemonId") id: String): Call<PokemonDetail>

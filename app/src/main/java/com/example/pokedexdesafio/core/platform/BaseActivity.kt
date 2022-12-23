@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.pokedexdesafio.AndroidApplication
 import com.example.pokedexdesafio.R
 import com.example.pokedexdesafio.core.di.ApplicationComponent
+import com.example.pokedexdesafio.core.functional.Failure
 
 abstract class BaseActivity : AppCompatActivity() {
 
@@ -37,7 +38,18 @@ abstract class BaseActivity : AppCompatActivity() {
     fun onFailure(failure: Boolean) {
         hideIndeterminateModalDialog()
         if (failure) {
-            Toast.makeText(this, getString(R.string.network_error), Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.error_network), Toast.LENGTH_LONG).show()
+        }
+    }
+
+    fun onFailure(failure: Failure) {
+        hideIndeterminateModalDialog()
+        when(failure){
+            is Failure.GenericFailure -> Toast.makeText(this, getString(R.string.error_generic), Toast.LENGTH_LONG).show()
+            is Failure.ServerError -> Toast.makeText(this, getString(R.string.error_server_internal), Toast.LENGTH_LONG).show()
+            is Failure.ServerNotFound -> Toast.makeText(this, getString(R.string.error_server_not_found), Toast.LENGTH_LONG).show()
+            is Failure.NetworkError -> Toast.makeText(this, getString(R.string.error_network), Toast.LENGTH_LONG).show()
+            is Failure.LocalDatabaseError -> Toast.makeText(this, getString(R.string.error_local_database), Toast.LENGTH_LONG).show()
         }
     }
 

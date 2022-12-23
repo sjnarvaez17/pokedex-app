@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">PokedexDesafio</string>
     <string name="wait_a_moment">Por favor, espere un momento</string>
-    <string name="network_error">Error obteniendo los datos</string>
+    <string name="error_network">Error obteniendo los datos</string>
+    <string name="error_generic">"Error general en el flujo"</string>
+    <string name="error_server_internal">"Error en el servidor"</string>
+    <string name="error_server_not_found">"Servidor no encontrado"</string>
+    <string name="error_local_database">"Error local de memoria"</string>
     <string name="no_param_error">No se recibió el pokémon como parámetro</string>
 </resources>

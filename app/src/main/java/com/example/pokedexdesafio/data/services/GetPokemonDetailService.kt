@@ -5,7 +5,7 @@ import com.example.pokedexdesafio.core.utils.ERROR_CODE_IO_EXCEPTION
 import com.example.pokedexdesafio.core.utils.ERROR_CONTENT_LENGTH
 import com.example.pokedexdesafio.core.utils.MEDIA_TYPE_JSON
 import com.example.pokedexdesafio.data.api.PokemonApi
-import com.example.pokedexdesafio.domain.model.PokemonDetail
+import com.example.pokedexdesafio.data.model.PokemonDetail
 import okhttp3.MediaType
 import okhttp3.ResponseBody
 import okio.Buffer

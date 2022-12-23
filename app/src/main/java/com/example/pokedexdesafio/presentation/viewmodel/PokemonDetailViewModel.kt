@@ -2,7 +2,7 @@ package com.example.pokedexdesafio.presentation.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.pokedexdesafio.domain.model.PokemonDetail
+import com.example.pokedexdesafio.data.model.PokemonDetail
 import com.example.pokedexdesafio.domain.use_case.GetPokemonDetailUseCase
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable

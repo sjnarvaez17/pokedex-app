@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide
 import com.example.pokedexdesafio.R
 import com.example.pokedexdesafio.core.platform.BaseActivity
 import com.example.pokedexdesafio.core.utils.KEY_ID
-import com.example.pokedexdesafio.domain.model.PokemonDetail
+import com.example.pokedexdesafio.data.model.PokemonDetail
 import com.example.pokedexdesafio.presentation.viewmodel.PokemonDetailViewModel
 import retrofit2.Response
 import javax.inject.Inject
@@ -40,12 +40,12 @@ class PokemonDetailActivity : BaseActivity() {
         if (response.isSuccessful) {
             val pokemonDetail = response.body()
             if (pokemonDetail == null) {
-                Toast.makeText(this, getString(R.string.network_error), Toast.LENGTH_LONG).show()
+                Toast.makeText(this, getString(R.string.error_network), Toast.LENGTH_LONG).show()
             } else {
                 updateUI(pokemonDetail)
             }
         } else {
-            Toast.makeText(this, getString(R.string.network_error), Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.error_network), Toast.LENGTH_LONG).show()
         }
     }
 

@@ -36,8 +36,8 @@ class PokemonAdapter(private var pokemons: List<Pokemon>, private val listener: 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) =
         holder.bind(pokemons[position], listener)
 
-    fun updateContent(newPokemons: List<Pokemon>) {
-        pokemons = newPokemons
+    fun updateContent(newPokemonResponses: List<Pokemon>) {
+        pokemons = newPokemonResponses
         notifyDataSetChanged()
     }
 }

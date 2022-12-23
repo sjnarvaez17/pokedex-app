@@ -1,6 +1,6 @@
 package com.example.pokedexdesafio.domain.repository
 
-import com.example.pokedexdesafio.domain.model.PokemonDetail
+import com.example.pokedexdesafio.data.model.PokemonDetail
 import io.reactivex.rxjava3.core.Single
 import retrofit2.Response
 
