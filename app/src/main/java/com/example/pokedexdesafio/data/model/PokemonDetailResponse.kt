@@ -1,7 +1,13 @@
 package com.example.pokedexdesafio.data.model
 
 import android.os.Parcelable
-import com.example.pokedexdesafio.domain.model.*
+import com.example.pokedexdesafio.domain.model.MoveDetail
+import com.example.pokedexdesafio.domain.model.PokemonDetail
+import com.example.pokedexdesafio.domain.model.TypeDetail
+import com.example.pokedexdesafio.domain.model.TypeList
+import com.example.pokedexdesafio.domain.model.MoveList
+import com.example.pokedexdesafio.domain.model.AbilityDetail
+import com.example.pokedexdesafio.domain.model.AbilityList
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
