@@ -8,6 +8,7 @@ import com.example.pokedexdesafio.R
 import com.example.pokedexdesafio.core.platform.BaseActivity
 import com.example.pokedexdesafio.core.utils.KEY_ID
 import com.example.pokedexdesafio.data.model.PokemonDetailResponse
+import com.example.pokedexdesafio.domain.model.PokemonDetail
 import com.example.pokedexdesafio.presentation.viewmodel.PokemonDetailViewModel
 import retrofit2.Response
 import javax.inject.Inject
@@ -35,7 +36,7 @@ class PokemonDetailActivity : BaseActivity() {
         }
     }
 
-    private fun onResponse(response: Response<PokemonDetailResponse>) {
+    private fun onResponse(response: Response<PokemonDetail>) {
         hideIndeterminateModalDialog()
         if (response.isSuccessful) {
             val pokemonDetail = response.body()
@@ -49,7 +50,7 @@ class PokemonDetailActivity : BaseActivity() {
         }
     }
 
-    private fun updateUI(details: PokemonDetailResponse) {
+    private fun updateUI(details: PokemonDetail) {
         title = details.name
         Glide.with(this@PokemonDetailActivity)
             .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${details.id}.png")
