@@ -1,6 +1,7 @@
 package com.example.pokedexdesafio.data.model
 
 import android.os.Parcelable
+import com.example.pokedexdesafio.domain.model.*
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -34,3 +35,43 @@ data class AbilityContainer(val ability: Ability, val isHidden: Boolean, val slo
 
 @Parcelize
 data class Ability(val name: String, val url: String) : Parcelable
+
+
+fun PokemonDetailResponse.toPokemonDetail(): PokemonDetail? =
+    if (name.isBlank() || types.isEmpty() || moves.isEmpty() || abilities.isEmpty() || locationAreaEncounters.isNullOrBlank()) {
+        null
+    } else {
+
+        var pokemonDetailTypeList: TypeList
+        var typePokemonDetail: TypeDetail
+        var listTypeList: MutableList<TypeList>
+        types.forEach {
+            if(it != null){
+                typePokemonDetail = TypeDetail(it.type.name, it.type.url)
+                pokemonDetailTypeList = TypeList(it.slot, typePokemonDetail)
+                listTypeList.add(pokemonDetailTypeList)
+            }
+        }
+        var moveDetail: MoveDetail
+        var listMoveDetail: MoveList
+        var movesList: MutableList<MoveList>
+        moves.forEach {
+            if(it != null){
+                moveDetail = MoveDetail(it.move.name, it.move.url)
+                listMoveDetail = MoveList(moveDetail)
+                movesList.add(listMoveDetail)
+            }
+        }
+        var abilityDetail: AbilityDetail
+        var listAbilityList: AbilityList
+        var abilityList: MutableList<AbilityList>
+        abilities.forEach {
+            if (it!=null){
+                abilityDetail = AbilityDetail(it.ability.name, it.ability.url)
+                listAbilityList = AbilityList(abilityDetail, it.isHidden, it.slot)
+                abilityList.add(listAbilityList)
+            }
+        }
+
+        PokemonDetail(id, name, listTypeList, movesList,abilityList, locationAreaEncounters)
+    }
