@@ -5,12 +5,12 @@ import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.pokedexdesafio.R
+import com.example.pokedexdesafio.core.functional.Response
 import com.example.pokedexdesafio.core.platform.BaseActivity
 import com.example.pokedexdesafio.core.utils.KEY_ID
 import com.example.pokedexdesafio.data.model.PokemonDetailResponse
 import com.example.pokedexdesafio.domain.model.PokemonDetail
 import com.example.pokedexdesafio.presentation.viewmodel.PokemonDetailViewModel
-import retrofit2.Response
 import javax.inject.Inject
 
 class PokemonDetailActivity : BaseActivity() {
@@ -38,8 +38,8 @@ class PokemonDetailActivity : BaseActivity() {
 
     private fun onResponse(response: Response<PokemonDetail>) {
         hideIndeterminateModalDialog()
-        if (response.isSuccessful) {
-            val pokemonDetail = response.body()
+        if (response.isSuccess()) {
+            val pokemonDetail = response.success?.value
             if (pokemonDetail == null) {
                 Toast.makeText(this, getString(R.string.error_network), Toast.LENGTH_LONG).show()
             } else {
