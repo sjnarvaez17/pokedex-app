@@ -8,7 +8,6 @@ import com.example.pokedexdesafio.R
 import com.example.pokedexdesafio.core.functional.Response
 import com.example.pokedexdesafio.core.platform.BaseActivity
 import com.example.pokedexdesafio.core.utils.KEY_ID
-import com.example.pokedexdesafio.data.model.PokemonDetailResponse
 import com.example.pokedexdesafio.domain.model.PokemonDetail
 import com.example.pokedexdesafio.presentation.viewmodel.PokemonDetailViewModel
 import javax.inject.Inject
