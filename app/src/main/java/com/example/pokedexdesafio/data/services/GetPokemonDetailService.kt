@@ -2,19 +2,15 @@ package com.example.pokedexdesafio.data.services
 
 import android.util.Log
 import com.example.pokedexdesafio.core.functional.Failure
-import com.example.pokedexdesafio.data.api.PokemonApi
-import com.example.pokedexdesafio.data.model.PokemonDetailResponse
-import com.example.pokedexdesafio.domain.model.PokemonDetail
 import com.example.pokedexdesafio.core.functional.Response
 import com.example.pokedexdesafio.core.functional.Success
-import com.example.pokedexdesafio.core.utils.*
+import com.example.pokedexdesafio.core.utils.HTTP_400
+import com.example.pokedexdesafio.core.utils.HTTP_500
+import com.example.pokedexdesafio.data.api.PokemonApi
 import com.example.pokedexdesafio.data.model.toAbilitiesList
 import com.example.pokedexdesafio.data.model.toMovesList
 import com.example.pokedexdesafio.data.model.toTypesList
-import okhttp3.MediaType
-import okhttp3.ResponseBody
-import okio.Buffer
-//import retrofit2.Response
+import com.example.pokedexdesafio.domain.model.PokemonDetail
 import retrofit2.Retrofit
 import javax.inject.Inject
 
