@@ -13,10 +13,10 @@ import kotlinx.parcelize.Parcelize
 data class PokemonDetailResponse(
     val id: Int?,
     val name: String?,
-    val types: List<TypeContainer?>,
+    val types: List<TypeContainer>?,
     // no info about evolve
-    val moves: List<MoveContainer?>,
-    val abilities: List<AbilityContainer?>,
+    val moves: List<MoveContainer>?,
+    val abilities: List<AbilityContainer>?,
     val locationAreaEncounters: String?
 ) : Parcelable
 
@@ -50,12 +50,12 @@ fun Ability.toAbility(): AbilityDetail? =
     }
 
 fun AbilityContainer.toAbilityList(): AbilityList? =
-    if(ability != null || isHidden != null || slot != null){
+    if(ability != null && isHidden != null && slot != null){
         AbilityList(ability?.toAbility(), isHidden, slot)
     }else{
         null
     }
-fun PokemonDetailResponse.toAbilitiesList(): List<AbilityList> = abilities.mapNotNull { it?.toAbilityList() }
+fun PokemonDetailResponse.toAbilitiesList(): List<AbilityList>? = abilities?.mapNotNull { it?.toAbilityList() }
 
 fun Move.toMove(): MoveDetail? =
     if (name.isNullOrBlank() || url.isNullOrBlank()) {
@@ -71,7 +71,7 @@ fun MoveContainer.toMoveList(): MoveList? =
         null
     }
 
-fun PokemonDetailResponse.toMovesList(): List<MoveList> = moves.mapNotNull { it?.toMoveList() }
+fun PokemonDetailResponse.toMovesList(): List<MoveList>? = moves?.mapNotNull { it?.toMoveList() }
 
 fun Type.toType(): TypeDetail? =
     if (name.isNullOrBlank() || url.isNullOrBlank()) {
@@ -87,7 +87,7 @@ fun TypeContainer.toTypeList(): TypeList? =
         null
     }
 
-fun PokemonDetailResponse.toTypesList(): List<TypeList> = types.mapNotNull { it?.toTypeList() }
+fun PokemonDetailResponse.toTypesList(): List<TypeList>? = types?.mapNotNull { it?.toTypeList() }
 
 //fun PokemonDetailResponse.toPokemonDetail(): PokemonDetail? =
 //    if (name.isNullOrBlank() || types.isEmpty() || moves.isEmpty() || abilities.isEmpty() || locationAreaEncounters.isNullOrBlank()) {

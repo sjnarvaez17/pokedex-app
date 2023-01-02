@@ -3,9 +3,9 @@ package com.example.pokedexdesafio.domain.model
 data class PokemonDetail(
     val id: Int?,
     val name: String?,
-    val types: List<TypeList>,
-    val moves: List<MoveList>,
-    val abilities: List<AbilityList>,
+    val types: List<TypeList>?,
+    val moves: List<MoveList>?,
+    val abilities: List<AbilityList>?,
     val locationAreaEncounters: String?
 )
 
