@@ -1,18 +1,16 @@
 package com.example.pokedexdesafio.presentation.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.pokedexdesafio.core.functional.Response
+import com.example.pokedexdesafio.core.platform.BaseViewModel
 import com.example.pokedexdesafio.domain.model.Pokemon
 import com.example.pokedexdesafio.domain.use_case.PokemonUseCase
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.disposables.CompositeDisposable
 import javax.inject.Inject
 
 class PokemonViewModel @Inject constructor(private val pokemonUseCase: PokemonUseCase) :
-    ViewModel() {
+    BaseViewModel() {
 
-    private val disposable = CompositeDisposable()
     var pokemonList = MutableLiveData<Response<List<Pokemon>>>()
 
     fun fetchPokemonList() {
@@ -23,10 +21,5 @@ class PokemonViewModel @Inject constructor(private val pokemonUseCase: PokemonUs
                     { pokemonList.postValue(Response()) }
                 )
         )
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        disposable.dispose()
     }
 }
