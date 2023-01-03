@@ -4,6 +4,7 @@ import android.os.Parcelable
 import com.example.pokedexdesafio.domain.model.Ability
 import com.example.pokedexdesafio.domain.model.Type
 import com.example.pokedexdesafio.domain.model.Move
+import com.example.pokedexdesafio.domain.model.PokemonDetail
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -14,7 +15,7 @@ data class PokemonDetailResponse(
     // no info about evolve
     val moves: List<MoveContainerResponse>?,
     val abilities: List<AbilityContainerResponse>?,
-    val locationAreaEncounters: String
+    val locationAreaEncounters: String?
 ) : Parcelable
 
 //Type
@@ -64,3 +65,16 @@ fun AbilityResponse.toAbility(): Ability? =
         Ability(name, url)
     }
 
+fun PokemonDetailResponse.toPokemonDetail() =
+    if (id == null || name.isBlank() || types.isNullOrEmpty() || moves.isNullOrEmpty() || abilities.isNullOrEmpty()) {
+        null
+    } else {
+        PokemonDetail(
+            id,
+            name,
+            types.mapNotNull { value -> value.type?.toType() },
+            moves.mapNotNull { value -> value.move?.toMove() },
+            abilities.mapNotNull { value -> value.ability?.toAbility() },
+            locationAreaEncounters
+        )
+    }
