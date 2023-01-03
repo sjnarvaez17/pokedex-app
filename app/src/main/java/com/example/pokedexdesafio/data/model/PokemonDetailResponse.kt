@@ -1,36 +1,80 @@
 package com.example.pokedexdesafio.data.model
 
 import android.os.Parcelable
+import com.example.pokedexdesafio.domain.model.Ability
+import com.example.pokedexdesafio.domain.model.Type
+import com.example.pokedexdesafio.domain.model.Move
+import com.example.pokedexdesafio.domain.model.PokemonDetail
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class PokemonDetail(
-    val id: Int,
+data class PokemonDetailResponse(
+    val id: Int?,
     val name: String,
-    val types: List<TypeContainer?>,
+    val types: List<TypeContainerResponse>?,
     // no info about evolve
-    val moves: List<MoveContainer?>,
-    val abilities: List<AbilityContainer?>,
+    val moves: List<MoveContainerResponse>?,
+    val abilities: List<AbilityContainerResponse>?,
     val locationAreaEncounters: String?
 ) : Parcelable
 
 //Type
 @Parcelize
-data class TypeContainer(val slot: Int, val type: Type) : Parcelable
+data class TypeContainerResponse(val slot: Int?, val type: TypeResponse?) : Parcelable
 
 @Parcelize
-data class Type(val name: String, val url: String) : Parcelable
+data class TypeResponse(val name: String?, val url: String?) : Parcelable
 
 //Attacks
 @Parcelize
-data class MoveContainer(val move: Move) : Parcelable
+data class MoveContainerResponse(val move: MoveResponse?) : Parcelable
 
 @Parcelize
-data class Move(val name: String, val url: String) : Parcelable
+data class MoveResponse(val name: String?, val url: String?) : Parcelable
 
 //Abilities
 @Parcelize
-data class AbilityContainer(val ability: Ability, val isHidden: Boolean, val slot: Int) : Parcelable
+data class AbilityContainerResponse(
+    val ability: AbilityResponse?,
+    val isHidden: Boolean?,
+    val slot: Int?
+) : Parcelable
 
 @Parcelize
-data class Ability(val name: String, val url: String) : Parcelable
+data class AbilityResponse(val name: String?, val url: String?) : Parcelable
+
+// Ext functions for mapping into business models
+fun TypeResponse.toType(): Type? =
+    if (name.isNullOrBlank() || url.isNullOrBlank()) {
+        null
+    } else {
+        Type(name, url)
+    }
+
+fun MoveResponse.toMove(): Move? =
+    if (name.isNullOrBlank() || url.isNullOrBlank()) {
+        null
+    } else {
+        Move(name, url)
+    }
+
+fun AbilityResponse.toAbility(): Ability? =
+    if (name.isNullOrBlank() || url.isNullOrBlank()) {
+        null
+    } else {
+        Ability(name, url)
+    }
+
+fun PokemonDetailResponse.toPokemonDetail() =
+    if (id == null || name.isBlank() || types.isNullOrEmpty() || moves.isNullOrEmpty() || abilities.isNullOrEmpty()) {
+        null
+    } else {
+        PokemonDetail(
+            id,
+            name,
+            types.mapNotNull { value -> value.type?.toType() },
+            moves.mapNotNull { value -> value.move?.toMove() },
+            abilities.mapNotNull { value -> value.ability?.toAbility() },
+            locationAreaEncounters
+        )
+    }

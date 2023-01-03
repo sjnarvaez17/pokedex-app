@@ -7,4 +7,5 @@ sealed class Failure {
     object ServerNotFound: Failure() //HTTP 4O0
     object NetworkError: Failure() //Generic network error
     object LocalDatabaseError: Failure()
+    object ExpectedParamMissing: Failure()
 }
