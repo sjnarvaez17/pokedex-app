@@ -35,14 +35,14 @@ class GetPokemonDetailService @Inject constructor(private val retrofit: Retrofit
                 } ?: Response(failure = Failure.GenericFailure)
             } else {
                 when (httpResponse.code()) {
-                    in HTTP_400 -> Response(null, Failure.ServerNotFound)
-                    in HTTP_500 -> Response(null, Failure.ServerError)
-                    else -> Response(null, Failure.NetworkError)
+                    in HTTP_400 -> Response(failure = Failure.ServerNotFound)
+                    in HTTP_500 -> Response(failure =Failure.ServerError)
+                    else -> Response(failure = Failure.NetworkError)
                 }
             }
         } catch (exception: Exception) {
             Log.e(javaClass.name, exception.toString())
-            Response(null, Failure.NetworkError)
+            Response(failure = Failure.NetworkError)
         }
     }
 }

@@ -33,7 +33,11 @@ data class MoveResponse(val name: String?, val url: String?) : Parcelable
 
 //Abilities
 @Parcelize
-data class AbilityContainerResponse(val ability: AbilityResponse?, val isHidden: Boolean?, val slot: Int?) : Parcelable
+data class AbilityContainerResponse(
+    val ability: AbilityResponse?,
+    val isHidden: Boolean?,
+    val slot: Int?
+) : Parcelable
 
 @Parcelize
 data class AbilityResponse(val name: String?, val url: String?) : Parcelable
