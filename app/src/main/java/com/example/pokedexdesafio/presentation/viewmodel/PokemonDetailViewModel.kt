@@ -15,15 +15,14 @@ class PokemonDetailViewModel
 
     private val disposable = CompositeDisposable()
     var pokemonDetails = MutableLiveData<Response<PokemonDetail>>()
-    var failure = MutableLiveData<Boolean>()
 
     fun fetchPokemonDetails(pokemonId: String) {
         disposable.add(
             pokemonDetailUseCase(pokemonId)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                    { pokemonDetails.value = it },
-                    { failure.value = true }
+                    { pokemonDetails.postValue(it) },
+                    { pokemonDetails.postValue(Response()) }
                 )
         )
     }

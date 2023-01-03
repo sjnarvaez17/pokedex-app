@@ -35,22 +35,21 @@ abstract class BaseActivity : AppCompatActivity() {
         indeterminateDialog?.cancel().also { indeterminateDialog = null }
             ?: Unit
 
-    fun onFailure(failure: Boolean) {
-        hideIndeterminateModalDialog()
-        if (failure) {
-            Toast.makeText(this, getString(R.string.error_network), Toast.LENGTH_LONG).show()
-        }
-    }
-
     fun onFailure(failure: Failure) {
         hideIndeterminateModalDialog()
-        when(failure){
-            is Failure.GenericFailure -> Toast.makeText(this, getString(R.string.error_generic), Toast.LENGTH_LONG).show()
-            is Failure.ServerError -> Toast.makeText(this, getString(R.string.error_server_internal), Toast.LENGTH_LONG).show()
-            is Failure.ServerNotFound -> Toast.makeText(this, getString(R.string.error_server_not_found), Toast.LENGTH_LONG).show()
-            is Failure.NetworkError -> Toast.makeText(this, getString(R.string.error_network), Toast.LENGTH_LONG).show()
-            is Failure.LocalDatabaseError -> Toast.makeText(this, getString(R.string.error_local_database), Toast.LENGTH_LONG).show()
-        }
+
+        Toast.makeText(
+            this,
+            when (failure) {
+                is Failure.GenericFailure -> getString(R.string.error_generic)
+                is Failure.ServerError -> getString(R.string.error_server_internal)
+                is Failure.ServerNotFound -> getString(R.string.error_server_not_found)
+                is Failure.NetworkError -> getString(R.string.error_network)
+                is Failure.LocalDatabaseError -> getString(R.string.error_local_database)
+                is Failure.ExpectedParamMissing -> getString(R.string.no_param_error)
+            },
+            Toast.LENGTH_LONG
+        ).show()
     }
 
     override fun onStop() {

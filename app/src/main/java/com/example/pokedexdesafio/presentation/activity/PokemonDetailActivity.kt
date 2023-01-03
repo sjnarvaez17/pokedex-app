@@ -2,9 +2,9 @@ package com.example.pokedexdesafio.presentation.activity
 
 import android.os.Bundle
 import android.widget.TextView
-import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.pokedexdesafio.R
+import com.example.pokedexdesafio.core.functional.Failure
 import com.example.pokedexdesafio.core.functional.Response
 import com.example.pokedexdesafio.core.platform.BaseActivity
 import com.example.pokedexdesafio.core.utils.KEY_ID
@@ -23,12 +23,10 @@ class PokemonDetailActivity : BaseActivity() {
         appComponent.inject(this)
 
         viewModel.pokemonDetails.observe(this@PokemonDetailActivity) { onResponse(it) }
-        viewModel.failure.observe(this@PokemonDetailActivity) { onFailure(it) }
 
         val pokemonId = intent.getStringExtra(KEY_ID)
         if (pokemonId.isNullOrBlank()) {
-            Toast.makeText(this, getString(R.string.no_param_error), Toast.LENGTH_LONG).show()
-                .also { finish() }
+            onFailure(Failure.ExpectedParamMissing).also { finish() }
         } else {
             viewModel.fetchPokemonDetails(pokemonId)
             showIndeterminateModalDialog()
@@ -38,14 +36,11 @@ class PokemonDetailActivity : BaseActivity() {
     private fun onResponse(response: Response<PokemonDetail>) {
         hideIndeterminateModalDialog()
         if (response.isSuccess()) {
-            val pokemonDetail = response.success?.value
-            if (pokemonDetail == null) {
-                Toast.makeText(this, getString(R.string.error_network), Toast.LENGTH_LONG).show()
-            } else {
-                updateUI(pokemonDetail)
+            if (response.success != null) {
+                updateUI(response.success.value)
             }
         } else {
-            Toast.makeText(this, getString(R.string.error_network), Toast.LENGTH_LONG).show()
+            response.failure?.let { onFailure(it) }
         }
     }
 
@@ -56,7 +51,6 @@ class PokemonDetailActivity : BaseActivity() {
             .into(findViewById(R.id.pokemonImage))
 
         findViewById<TextView>(R.id.pokemonType).text =
-            details.types.filterNotNull().joinToString(separator = " - ") { it.name.toString() }
-        //TODO Review it.type?.name.toString
+            details.types.joinToString(separator = " - ") { it.name }
     }
 }
