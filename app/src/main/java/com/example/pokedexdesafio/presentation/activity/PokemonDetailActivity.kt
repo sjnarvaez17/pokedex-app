@@ -56,7 +56,7 @@ class PokemonDetailActivity : BaseActivity() {
             .into(findViewById(R.id.pokemonImage))
 
         findViewById<TextView>(R.id.pokemonType).text =
-            details.types.filterNotNull().joinToString(separator = " - ") { it.type?.name.toString() }
+            details.types.filterNotNull().joinToString(separator = " - ") { it.name.toString() }
         //TODO Review it.type?.name.toString
     }
 }

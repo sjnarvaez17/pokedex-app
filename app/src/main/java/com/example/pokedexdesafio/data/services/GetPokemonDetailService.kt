@@ -7,9 +7,9 @@ import com.example.pokedexdesafio.core.functional.Success
 import com.example.pokedexdesafio.core.utils.HTTP_400
 import com.example.pokedexdesafio.core.utils.HTTP_500
 import com.example.pokedexdesafio.data.api.PokemonApi
-import com.example.pokedexdesafio.data.model.toAbilitiesList
-import com.example.pokedexdesafio.data.model.toMovesList
-import com.example.pokedexdesafio.data.model.toTypesList
+import com.example.pokedexdesafio.data.model.toAbility
+import com.example.pokedexdesafio.data.model.toMove
+import com.example.pokedexdesafio.data.model.toType
 import com.example.pokedexdesafio.domain.model.PokemonDetail
 import retrofit2.Retrofit
 import javax.inject.Inject
@@ -18,22 +18,22 @@ class GetPokemonDetailService @Inject constructor(private val retrofit: Retrofit
 
     fun fetchPokemonDetails(id: String): Response<PokemonDetail> {
         return try {
-           val httpResponse = retrofit.create(PokemonApi::class.java).fetchPokemonDetails(id).execute()
+            val httpResponse =
+                retrofit.create(PokemonApi::class.java).fetchPokemonDetails(id).execute()
 
             if (httpResponse.isSuccessful) {
-                val listMoves = httpResponse.body()?.toMovesList().orEmpty()
-                val listAbility = httpResponse.body()?.toAbilitiesList().orEmpty()
-                val typeList = httpResponse.body()?.toTypesList().orEmpty()
-                val pokemonDetail = PokemonDetail(
-                    httpResponse.body()?.id,
-                    httpResponse.body()?.name,
-                    typeList,
-                    listMoves,
-                    listAbility,
-                    httpResponse.body()?.locationAreaEncounters
-                )
-                Response(Success(pokemonDetail))
-            }else {
+                httpResponse.body()?.let {
+                    val pokemonDetail = PokemonDetail(
+                        it.id,
+                        it.name,
+                        it.types?.mapNotNull { value -> value.type?.toType() }.orEmpty(),
+                        it.moves?.mapNotNull { value -> value.move?.toMove() }.orEmpty(),
+                        it.abilities?.mapNotNull { value -> value.ability?.toAbility() }.orEmpty(),
+                        it.locationAreaEncounters
+                    )
+                    Response(Success(pokemonDetail))
+                } ?: Response(failure = Failure.GenericFailure)
+            } else {
                 when (httpResponse.code()) {
                     in HTTP_400 -> Response(null, Failure.ServerNotFound)
                     in HTTP_500 -> Response(null, Failure.ServerError)
