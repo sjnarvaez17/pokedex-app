@@ -1,4 +1,4 @@
-package com.example.pokedexdesafio.core.db
+package com.example.pokedexdesafio.data.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
