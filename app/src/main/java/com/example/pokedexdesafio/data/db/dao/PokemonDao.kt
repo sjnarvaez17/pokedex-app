@@ -8,9 +8,9 @@ import com.example.pokedexdesafio.data.db.entities.PokemonEntity
 @Dao
 interface PokemonDao {
 
-    @Query("SELECT * FROM PokemonEntity")
-    fun getAllPokemons(): List<PokemonEntity>
-
     @Insert
     fun insertPokemon(newPokemon: PokemonEntity)
+
+    @Query("SELECT * FROM PokemonEntity")
+    fun getAllPokemons(): List<PokemonEntity>
 }
