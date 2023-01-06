@@ -1,4 +1,4 @@
-package com.example.pokedexdesafio.data.dao
+package com.example.pokedexdesafio.data.db.dao
 
 import androidx.room.Dao
 import androidx.room.Insert

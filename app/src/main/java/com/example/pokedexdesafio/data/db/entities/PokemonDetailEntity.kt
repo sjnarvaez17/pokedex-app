@@ -1,10 +1,9 @@
-package com.example.pokedexdesafio.data.entities
+package com.example.pokedexdesafio.data.db.entities
 
 import androidx.room.Entity
 
 @Entity(tableName = "pokemon_detail_entity")
 data class PokemonDetailEntity(
-
     val id: Int,
     val name: String,
     val types: List<String>,
@@ -12,4 +11,3 @@ data class PokemonDetailEntity(
     val abilities: List<String>,
     val locationAreaEncounters: String
 )
-
