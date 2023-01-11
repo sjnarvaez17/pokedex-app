@@ -4,6 +4,7 @@ import android.app.Application
 import com.example.pokedexdesafio.core.di.ApplicationComponent
 import com.example.pokedexdesafio.core.di.ApplicationModule
 import com.example.pokedexdesafio.core.di.DaggerApplicationComponent
+import com.example.pokedexdesafio.core.di.RoomModule
 
 class AndroidApplication : Application() {
 
@@ -11,6 +12,7 @@ class AndroidApplication : Application() {
         DaggerApplicationComponent
             .builder()
             .applicationModule(ApplicationModule(this))
+            .applicationModule(RoomModule(this))
             .build()
     }
 

@@ -12,14 +12,14 @@ data class PokemonContainerResponse(
 ) : Parcelable
 
 @Parcelize
-data class PokemonResponse(val id: Int?, val name: String?, val url: String?) : Parcelable
+data class PokemonResponse(val name: String?, val url: String?) : Parcelable
 
 // Ext functions for mapping into business models
 fun PokemonResponse.toPokemon(): Pokemon? =
     if (name.isNullOrBlank() || url.isNullOrBlank()) {
         null
     } else {
-        Pokemon(id, name, url)
+        Pokemon(name, url)
     }
 
 fun PokemonContainerResponse.toPokemonList(): List<Pokemon> = results.mapNotNull { it.toPokemon() }
