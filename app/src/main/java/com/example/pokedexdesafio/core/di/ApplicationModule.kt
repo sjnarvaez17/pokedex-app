@@ -1,7 +1,9 @@
 package com.example.pokedexdesafio.core.di
 
 import android.content.Context
+import androidx.room.Room
 import com.example.pokedexdesafio.AndroidApplication
+import com.example.pokedexdesafio.data.db.AppDatabase
 import com.example.pokedexdesafio.domain.repository.GetPokemonRepo
 import com.example.pokedexdesafio.data.repository.GetPokemonRepoImpl
 import com.example.pokedexdesafio.data.services.GetPokemonService
@@ -27,6 +29,12 @@ class ApplicationModule(private val application: AndroidApplication) {
         .baseUrl("https://pokeapi.co/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
+
+    @Provides
+    @Singleton
+    fun provideRoomDatabase(): AppDatabase =
+        Room.databaseBuilder(application, AppDatabase::class.java, "room-db")
+            .build()
 
     @Provides
     @Singleton
