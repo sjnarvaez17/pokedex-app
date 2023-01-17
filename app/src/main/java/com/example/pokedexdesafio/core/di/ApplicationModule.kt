@@ -19,6 +19,10 @@ import javax.inject.Singleton
 @Module
 class ApplicationModule(private val application: AndroidApplication) {
 
+    companion object {
+        const val ROOM_DB= "room-db"
+    }
+
     @Provides
     @Singleton
     fun provideApplicationContext(): Context = application
@@ -33,7 +37,7 @@ class ApplicationModule(private val application: AndroidApplication) {
     @Provides
     @Singleton
     fun provideRoomDatabase(): AppDatabase =
-        Room.databaseBuilder(application, AppDatabase::class.java, "room-db")
+        Room.databaseBuilder(application, AppDatabase::class.java, ROOM_DB)
             .build()
 
     @Provides
